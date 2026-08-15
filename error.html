@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Error Page</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: aliceblue;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .loader {
+            width: 40px;
+            height: 40px;
+
+            border: 4px solid #d6e4ed;
+            border-top: 4px solid #333;
+
+            border-radius: 50%;
+
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        #error {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        #error h1 {
+            font-size: 2rem;
+            color: #333;
+        }
+
+        #error p {
+            color: #777;
+        }
+
+        #retryBtn {
+            color: #333;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
+            text-decoration: underline;
+        }
+
+        #retryBtn:hover {
+            color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- LOADING -->
+        <div id="loading">
+            <div class="loader"></div>
+            <p>Loading...</p>
+        </div>
+        <!-- ERROR -->
+        <div id="error">
+            <h1>⚠︎ Error ⚠︎</h1>
+            <p>Something went wrong. ⓘ</p>
+            <p id="retryBtn"> Please Try Again</p>
+        </div>
+    </div>
+
+
+    <script>
+        const loading = document.getElementById("loading");
+        const error = document.getElementById("error");
+        const retryBtn = document.getElementById("retryBtn");
+
+        let clickCount = 0;
+        function showError() {
+
+            loading.style.display = "none";
+            error.style.display = "flex";
+
+        }
+        function showLoading() {
+
+            error.style.display = "none";
+            loading.style.display = "flex";
+
+            setTimeout(() => {
+                showError();
+            }, 2500);
+
+        }
+        showLoading();
+
+        retryBtn.addEventListener("click", () => {
+            clickCount++;
+            console.log("Button clicked:", clickCount);
+            if (clickCount === 2) {
+                window.location.href = "index.html";
+                return;
+            }
+            showLoading();
+
+        });
+
+    </script>
+
+</body>
+</html>
