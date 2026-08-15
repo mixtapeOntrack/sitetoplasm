@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>bleh</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+            background-color: rgb(230, 231, 233);
+            background-image:
+                linear-gradient(
+                    rgba(132, 167, 194, 0.18) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(120, 160, 190, 0.18) 1px,
+                    transparent 1px
+                );
+            background-size: 25px 25px;
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: fadeIn 2s ease forwards;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            animation:
+                contentAppear
+                1.5s ease
+                0.5s forwards;
+        }
+
+        .card {
+            width: 18rem;
+            height: 33rem;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: white;
+            border: 2px solid rgb(49, 11, 11);
+            display: flex;
+            flex-direction: column;
+            box-shadow:
+                4px 5px 0 rgba(0, 0, 0, 0.12);
+        }
+
+        .to {
+            flex-shrink: 0;
+            padding-bottom: 8px;
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        .to h3 {
+            font-size: 15px;
+            font-family:Arial, Helvetica, sans-serif
+    
+        }
+
+        .message {
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 10px 6px;
+            text-align: left;
+            line-height: 1.5;
+            font-size: 13px;
+        }
+
+
+        .message p {
+            overflow-wrap: break-word;
+        }
+
+        .message::-webkit-scrollbar {
+            width: 5px;
+        }
+
+
+        .message::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+
+        .message::-webkit-scrollbar-thumb {
+            background-color: #5b3232;
+            border-radius: 10px;
+        }
+
+
+        .message::-webkit-scrollbar-thumb:hover {
+            background-color: #527a96;
+        }
+
+        .from {
+            flex-shrink: 0;
+            min-height: 45px;
+            padding-top: 8px;
+            border-top: 1px dashed #999;
+            text-align: right;
+            font-size: 13px;
+        }
+
+        .music-section {
+            flex-shrink: 0;
+            height: 190px;
+            padding-top: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-top: 1px dashed black;
+            margin-top: 11px;
+        }
+
+
+        .music-section iframe {
+            width: 90%;
+            height: 100px;
+            border: 0;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        
+        .music-section h3 {
+            font-size: 12px;
+            font-family:Arial, Helvetica, sans-serif
+        }
+
+        .floating-heart {
+            position: absolute;
+            bottom: -50px;
+            color: rgb(78, 20, 20);
+            font-size: 20px;
+            animation:
+                floatUp
+                linear
+                infinite;
+        }
+
+
+        .heart1 {
+            left: 10%;
+            animation-duration: 8s;
+            animation-delay: 1s;
+        }
+
+
+        .heart2 {
+            left: 25%;
+            animation-duration: 10s;
+            animation-delay: 3s;
+        }
+
+
+        .heart3 {
+            left: 45%;
+            animation-duration: 7s;
+            animation-delay: 0s;
+        }
+
+
+        .heart4 {
+            left: 65%;
+            animation-duration: 11s;
+            animation-delay: 2s;
+        }
+
+
+        .heart5 {
+            left: 85%;
+            animation-duration: 9s;
+            animation-delay: 4s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+
+        }
+
+
+        @keyframes contentAppear {
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(40px)
+                    scale(0.9)
+                    rotate(-2deg);
+            }
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1)
+                    rotate(0);
+            }
+
+        }
+
+
+        @keyframes floatUp {
+            0% {
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                transform:
+                    translateY(-110vh)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+        }
+
+        .ps {
+               flex-shrink: 0;
+               text-align: right;
+               padding-top: 8px;
+               padding-right: 10px;
+            }
+
+        .ps p {
+               font-size: 13px;
+               font-family: Arial, Helvetica, sans-serif;
+            
+            }
+            
+         #musicBtn {
+            border: none;
+            background-color: white ;
+            color: black;
+            font-size: 12px;
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="container">
+        <div class="floating-heart heart1">♡</div>
+        <div class="floating-heart heart2">♥</div>
+        <div class="floating-heart heart3">♡</div>
+        <div class="floating-heart heart4">♥</div>
+        <div class="floating-heart heart5">♡</div>
+        <!-- MAIN CONTENT -->
+        <div class="content">
+            <div class="card">
+                <div class="to">
+                    <h3><i>aki,</i></h3>
+                </div>
+                <div class="message">
+                    <p>
+                        Contrary to popular belief, Lorem Ipsum is not
+                        simply random text. It has roots in a piece of
+                        classical Latin literature from 45 BC, making it
+                        over 2000 years old.
+
+                        Richard McClintock, a Latin professor at
+                        Hampden-Sydney College in Virginia, looked up one
+                        of the more obscure Latin words, consectetur,
+                        from a Lorem Ipsum passage.
+
+                        Going through the cites of the word in classical
+                        literature, he discovered the undoubtable source.
+
+                        Lorem Ipsum comes from sections 1.10.32 and
+                        1.10.33 of "de Finibus Bonorum et Malorum"
+                        (The Extremes of Good and Evil) by Cicero,
+                        written in 45 BC.
+
+                        This book is a treatise on the theory of ethics,
+                        very popular during the Renaissance.
+
+                        The first line of Lorem Ipsum, "Lorem ipsum
+                        dolor sit amet..", comes from a line in section
+                        1.10.32.
+
+                        The standard chunk of Lorem Ipsum used since
+                        1966 is reproduced below for those interested.
+
+                        Sections 1.10.32 and 1.10.33 from "de Finibus
+                        Bonorum et Malorum" by Cicero are also reproduced
+                        in their exact original form.
+
+                        This is another paragraph of the letter.
+
+                        You can write your personal message here.
+
+                        The message area will automatically scroll
+                        when the content becomes too long.
+                    </p>
+                </div>
+                <div class="music-section">
+                    <h3><i>the song's about to start, and so are we :P</i></h3>
+                    <iframe
+                        src="https://open.spotify.com/embed/track/4fLspOxX39tXzHHqrEqTgf?utm_source=generator"
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy">
+                    </iframe>
+                    <button id="musicBtn" onclick="toggleMusic()">play the song</button>
+
+                    <audio id="music" loop>
+                        <source src="Buzz.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="ps">
+                    <p><i>xo, xy</i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMusic() {
+            const music = document.getElementById("music");
+            const button = document.getElementById("musicBtn");
+
+            if (music.paused) {
+                music.play();
+                button.innerHTML = "stop";
+            } else {
+                music.pause();
+                music.currentTime = 0;
+                button.innerHTML = "play the song";
+            }
+        }
+    </script>
+
+</body>
+</html>
